@@ -83,7 +83,7 @@ class Imap
 
   def listen(m)
     loop do
-    sleep(10)
+    sleep(@interval)
     imap = imap_connect
     imap_poll(m, imap)
     imap.disconnect
