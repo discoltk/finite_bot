@@ -16,16 +16,16 @@ require './lib/finite_bot/tinyurl'
 
 include FiniteBot
 
-$APP_CONFIG = YAML.load_file("./config/irc.yaml")
+$APP_CONFIG = YAML.load_file("./config/config.yaml")
 
 bot = Cinch::Bot.new do
   configure do |c|
-   c.server          = $APP_CONFIG[:server]
-   c.port            = $APP_CONFIG[:port]
-   c.nick            = $APP_CONFIG[:nick]
-   c.user            = $APP_CONFIG[:user]
-   c.password        = $APP_CONFIG[:password]
-   c.channels        = $APP_CONFIG[:channels].to_array
+   c.server          = $APP_CONFIG[:irc][:server]
+   c.port            = $APP_CONFIG[:irc][:port]
+   c.nick            = $APP_CONFIG[:irc][:nick]
+   c.user            = $APP_CONFIG[:irc][:user]
+   c.password        = $APP_CONFIG[:irc][:password]
+   c.channels        = $APP_CONFIG[:irc][:channels].to_array
    c.plugins.plugins = [TinyURL, ForEX, Imap]
    c.plugins.options[Imap] = {
      :host     => '',

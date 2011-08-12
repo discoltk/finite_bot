@@ -1,7 +1,0 @@
----
-:server: irc.efnet.net
-:port: 6667
-:nick: fbot12
-:user: silicon
-:password: ''
-:channels: #baykids
