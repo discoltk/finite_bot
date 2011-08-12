@@ -9,7 +9,7 @@ module FiniteBot
     listen_to :channel
 
     def getrate(*p)
-      File.open("forex.data") do |fh|
+      File.open("config/forex.data") do |fh|
         fxsymbols = fh.gets.split(',')
         fxrates = fh.gets.split(',')
         Hash[*fxsymbols.zip(fxrates).flatten]
