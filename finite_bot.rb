@@ -30,12 +30,11 @@ class ForEX
   listen_to :channel
 
   def getrate(*p)
-    fxdatafile = File.new("forex.data", "r")
-    fxsymbols = fxdatafile.gets.split(',')
-    fxrates = fxdatafile.gets.split(',')
-    rates = Hash[*fxsymbols.zip(fxrates).flatten]
-    fxdatafile.close
-    return rates
+    File.new("forex.data") do |fh|
+      fxsymbols = fh.gets.split(',')
+      fxrates = fh.gets.split(',')
+      Hash[*fxsymbols.zip(fxrates).flatten]
+    end
   end
 
   def listen(m)
@@ -69,14 +68,14 @@ class Imap
 
   def initialize(*args)
     super
-    @mail_host = config[:host] 
-    @mail_user = config[:user]
+    @mail_host     = config[:host] 
+    @mail_user     = config[:user]
     @mail_password = config[:password]
-    @mail_folder = config[:folder] || 'INBOX'
-    @mail_port = config[:port] || 143
-    @mail_ssl = config[:ssl] || false
-    @mark_as_read = config[:mark_as_read ] || true
-    @interval = config[:interval] || 300
+    @mail_folder   = config[:folder] || 'INBOX'
+    @mail_port     = config[:port] || 143
+    @mail_ssl      = config[:ssl] || false
+    @mark_as_read  = config[:mark_as_read ] || true
+    @interval      = config[:interval] || 300
     @messages_seen = 0
   end
 
