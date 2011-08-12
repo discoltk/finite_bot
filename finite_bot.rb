@@ -28,12 +28,12 @@ bot = Cinch::Bot.new do
    c.channels        = $APP_CONFIG[:channels].to_array
    c.plugins.plugins = [TinyURL, ForEX, Imap]
    c.plugins.options[Imap] = {
-     :host => '',
-     :user => '',
+     :host     => '',
+     :user     => '',
      :password => "",
-     :port => 993,
-     :folder => '',
-     :ssl => true,
+     :port     => 993,
+     :folder   => '',
+     :ssl      => true,
      :interval => 10,
    }
   end
