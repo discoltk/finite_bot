@@ -6,10 +6,10 @@ module FiniteBot
   class Ctcp
     include Cinch::Plugin
 
-    listen_to :ctcp
+    ctcp :userinfo
 
-    def listen(m)
-      # 
+    def ctcp_userinfo(m)
+      m.ctcp_reply "Finite Bot #{VERSION}"
     end
   end
 end
