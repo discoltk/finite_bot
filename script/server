@@ -3,8 +3,6 @@
 #  
 $LOAD_PATH.unshift File.join(File.dirname(__FILE__), '../lib/finite_bot')
 
-APP_ROOT = "#{File.dirname(__FILE__)}/.."
-
 require 'open-uri'
 require "openssl"
 require 'net/imap'
@@ -14,7 +12,8 @@ require 'bundler/setup'
 require 'cinch'
 require 'autoreload'
 
-autoreload(:interval=>2, :verbose=>true) do
+require 'const'
+autoreload(:interval=>2, :verbose=>false) do
   require 'ctcp'
   require 'forex'
   require 'imap'
@@ -22,6 +21,8 @@ autoreload(:interval=>2, :verbose=>true) do
 end
 
 include FiniteBot
+
+APP_ROOT = "#{File.dirname(__FILE__)}/.."
 
 raise ArgumentError, "Unable to read config file" unless File.exists?("#{APP_ROOT}/config/config.yaml")
 
