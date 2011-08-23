@@ -1,6 +1,7 @@
 # 
 #  finite_bot.rb
 #  
+$LOAD_PATH.unshift File.join(File.dirname(__FILE__), '../lib/finite_bot')
 
 require 'open-uri'
 require "openssl"
@@ -9,14 +10,23 @@ require 'net/imap'
 require "rubygems"
 require 'bundler/setup'
 require 'cinch'
+require 'autoreload'
 
-require './lib/finite_bot/forex'
-require './lib/finite_bot/imap'
-require './lib/finite_bot/tinyurl'
+require 'const'
+autoreload(:interval=>2, :verbose=>false) do
+  require 'ctcp'
+  require 'forex'
+  require 'imap'
+  require 'tinyurl'
+end
 
 include FiniteBot
 
-$APP_CONFIG = YAML.load_file("./config/config.yaml")
+APP_ROOT = "#{File.dirname(__FILE__)}/.."
+
+raise ArgumentError, "Unable to read config file" unless File.exists?("#{APP_ROOT}/config/config.yaml")
+
+$APP_CONFIG = YAML.load_file("#{APP_ROOT}/config/config.yaml")
 
 bot = Cinch::Bot.new do
   configure do |c|
@@ -26,7 +36,7 @@ bot = Cinch::Bot.new do
    c.user            = $APP_CONFIG[:irc][:user]
    c.password        = $APP_CONFIG[:irc][:password]
    c.channels        = $APP_CONFIG[:irc][:channels].to_a
-   c.plugins.plugins = [TinyURL, ForEX, Imap]
+   c.plugins.plugins = [TinyURL, ForEX, Imap, Ctcp]
    c.plugins.options[Imap] = {
      :host     => $APP_CONFIG[:imap][:host],
      :user     => $APP_CONFIG[:imap][:user],

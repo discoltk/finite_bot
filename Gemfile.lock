@@ -1,6 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    autoreload (1.0.0)
     cinch (1.1.3)
     diff-lcs (1.1.2)
     rspec (2.6.0)
@@ -16,5 +17,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autoreload (= 1.0.0)
   cinch (= 1.1.3)
   rspec
