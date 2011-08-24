@@ -18,9 +18,11 @@ module FiniteBot
     def listen(m)
       urls = URI.extract(m.message, "http")
 
-      unless urls.first.size < $APP_CONFIG[:tinyurl][:minimum_characters] || 25
-        short_urls = urls.map { |url| shorten(url) }.compact
-        m.reply short_urls.join(", ") unless short_urls.empty?
+      unless urls.first.nil?
+        unless urls.first.size < $APP_CONFIG[:tinyurl][:minimum_characters] || 25
+          short_urls = urls.map { |url| shorten(url) }.compact
+          m.reply short_urls.join(", ") unless short_urls.empty?
+        end
       end
     end
   end
