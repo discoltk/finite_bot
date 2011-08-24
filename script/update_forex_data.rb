@@ -6,7 +6,7 @@
 # 
 
 APP_CONFIG = {
-  :url  => "http://www.x-rates.com/calculator.html"
+  :url  => "http://www.gocurrency.com/calculator.html"
 }
 
 require 'net/http'
