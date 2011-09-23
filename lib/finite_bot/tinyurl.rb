@@ -19,7 +19,7 @@ module FiniteBot
       urls = URI.extract(m.message, ["http", "https"])
 
       unless urls.first.nil?
-        unless urls.first.size < $APP_CONFIG[:tinyurl][:minimum_characters] || 25
+        unless urls.first.size < ($APP_CONFIG[:tinyurl][:minimum_characters] || 25)
           short_urls = urls.map { |url| shorten(url) }.compact
           m.reply short_urls.join(", ") unless short_urls.empty?
         end
