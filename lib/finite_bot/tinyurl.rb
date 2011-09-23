@@ -1,6 +1,6 @@
-# 
+#
 #  tinyurl.rb
-# 
+#
 
 module FiniteBot
   class TinyURL
@@ -16,7 +16,7 @@ module FiniteBot
     end
 
     def listen(m)
-      urls = URI.extract(m.message, "http")
+      urls = URI.extract(m.message, ["http", "https"])
 
       unless urls.first.nil?
         unless urls.first.size < $APP_CONFIG[:tinyurl][:minimum_characters] || 25
