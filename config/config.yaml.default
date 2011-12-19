@@ -14,3 +14,5 @@
     :user: default
     :password: ''
     :channels: [ '#default' ]
+  :tinyurl:
+    :minimum_characters: 30

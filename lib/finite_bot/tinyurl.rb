@@ -1,6 +1,6 @@
-# 
+#
 #  tinyurl.rb
-# 
+#
 
 module FiniteBot
   class TinyURL
@@ -16,10 +16,13 @@ module FiniteBot
     end
 
     def listen(m)
-      urls = URI.extract(m.message, "http")
-      short_urls = urls.map { |url| shorten(url) }.compact
-      unless short_urls.empty?
-        m.reply short_urls.join(", ")
+      urls = URI.extract(m.message, ["http", "https"])
+
+      unless urls.first.nil?
+        unless urls.first.size < ($APP_CONFIG[:tinyurl][:minimum_characters] || 25)
+          short_urls = urls.map { |url| shorten(url) }.compact
+          m.reply short_urls.join(", ") unless short_urls.empty?
+        end
       end
     end
   end
