@@ -1,6 +1,6 @@
-# 
+#
 #  finite_bot.rb
-#  
+#
 $LOAD_PATH.unshift File.join(File.dirname(__FILE__), '../lib/finite_bot')
 
 require 'open-uri'
@@ -21,12 +21,6 @@ autoreload(:interval=>2, :verbose=>false) do
 end
 
 include FiniteBot
-
-APP_ROOT = "#{File.dirname(__FILE__)}/.."
-
-raise ArgumentError, "Unable to read config file" unless File.exists?("#{APP_ROOT}/config/config.yaml")
-
-APP_CONFIG = YAML.load_file("#{APP_ROOT}/config/config.yaml")
 
 bot = Cinch::Bot.new do
   configure do |c|
