@@ -18,7 +18,8 @@ module FiniteBot
 
     def listen(m)
       commonfx = ["USD", "EUR", "JPY", "PHP", "CHF"]
-      regex = Regexp.new(/([0-9.,]+?)\s*(JPY|USD|EUR|PHP|CHF)/i)
+      regex = Regexp.new(/([0-9.]+?)\s*(JPY|USD|EUR|PHP|CHF)/i)
+      m.message.gsub!(",","")
       matchdata = regex.match(m.message)
       if matchdata
         matchvalue=matchdata[1]
