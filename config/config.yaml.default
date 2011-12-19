@@ -15,4 +15,5 @@
     :password: ''
     :channels: [ '#default' ]
   :tinyurl:
+    :display_titles: true
     :minimum_characters: 30
