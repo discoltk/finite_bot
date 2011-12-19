@@ -1,6 +1,6 @@
-# 
+#
 #  ctcp.rb
-# 
+#
 
 module FiniteBot
   class Ctcp

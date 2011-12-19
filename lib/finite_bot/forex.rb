@@ -1,6 +1,6 @@
-# 
+#
 #  forex.rb
-# 
+#
 
 module FiniteBot
   class ForEX
@@ -19,12 +19,13 @@ module FiniteBot
     def listen(m)
       commonfx = ["USD", "EUR", "JPY", "PHP", "CHF"]
       regex = Regexp.new(/([0-9.]+?)\s*(JPY|USD|EUR|PHP|CHF)/i)
+      m.message.gsub!(",","")
       matchdata = regex.match(m.message)
       if matchdata
         matchvalue=matchdata[1]
         matchsymbol=matchdata[2].upcase
         ircstring=matchvalue + " " + matchsymbol + " == "
-        rates=getrate 
+        rates=getrate
         for ss in 0...commonfx.length
           if commonfx[ss] != matchsymbol
             fxconv = matchvalue.to_f * rates[commonfx[ss]].to_f / rates[matchsymbol].to_f
