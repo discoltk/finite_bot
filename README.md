@@ -1,6 +1,6 @@
 # Finite Bot
 
-    Written by:  
+    Written by:
         The Finite Crew
 
 ## Requirements
@@ -11,7 +11,7 @@
 ## Usage
 
 - Execute update_forex_data.rb script
-> cd config  
+> cd config
 > ../script/update_forex_data.rb
 
 - Startup bot
