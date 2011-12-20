@@ -1,6 +1,6 @@
-# 
+#
 #  imap.rb
-# 
+#
 
 module FiniteBot
   class Imap
@@ -10,7 +10,7 @@ module FiniteBot
 
     def initialize(*args)
       super
-      @mail_host     = config[:host] 
+      @mail_host     = config[:host]
       @mail_user     = config[:user]
       @mail_password = config[:password]
       @mail_folder   = config[:folder] || 'INBOX'
@@ -27,7 +27,7 @@ module FiniteBot
         imap = imap_connect
         imap_poll(m, imap)
         imap.disconnect
-      end 
+      end
     end
 
     def get_messages(conn)
@@ -53,7 +53,7 @@ module FiniteBot
     end
 
     def imap_poll(m, connection)
-      get_messages(connection) do |mailbox, subj, body| 
+      get_messages(connection) do |mailbox, subj, body|
         urls = URI.extract(body, "http")
         urls.uniq.each do |url|
           m.reply "[#{mailbox}] " + url

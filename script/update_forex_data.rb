@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby -wT0
-# 
+#
 #  update_forex_data.rb
-#  
+#
 #  Created by hMz on 2011-08-19.
-# 
+#
 
 APP_CONFIG = {
   :url  => "http://www.x-rates.com/calculator.html"
