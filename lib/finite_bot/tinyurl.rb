@@ -6,7 +6,7 @@ module FiniteBot
   class TinyURL
     include Cinch::Plugin
 
-    listen_to :channel
+    listen_to :message
 
     def title(url)
       html  = open(url).read
