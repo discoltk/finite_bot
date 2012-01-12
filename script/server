@@ -1,24 +1,7 @@
 #
 #  finite_bot.rb
 #
-$LOAD_PATH.unshift File.join(File.dirname(__FILE__), '../lib/finite_bot')
-
-require 'open-uri'
-require "openssl"
-require 'net/imap'
-
-require "rubygems"
-require 'bundler/setup'
-require 'cinch'
-require 'autoreload'
-
-require 'const'
-autoreload(:interval=>2, :verbose=>false) do
-  require 'ctcp'
-  require 'forex'
-  require 'imap'
-  require 'tinyurl'
-end
+require './lib/finite_bot'
 
 include FiniteBot
 
