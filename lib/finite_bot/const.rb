@@ -8,4 +8,4 @@ raise ArgumentError, "Unable to read config file" unless File.exists?("#{APP_ROO
 
 APP_CONFIG = YAML.load_file("#{APP_ROOT}/config/config.yaml")
 
-VERSION  = 0.14
+VERSION  = 0.15
